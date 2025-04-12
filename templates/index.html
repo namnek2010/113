@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rickroll Web</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Chào mừng bạn đã đến với trang web!</h1>
+
+        <div class="video-container" id="videoBox" style="display: none;">
+            <video id="rickrollVideo" width="720" controls loop muted playsinline>
+    <source src="/static/rickroll.mp4" type="video/mp4">
+    Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </div>
+
+        <button class="red-button" id="rickrollBtn" onclick="startRickroll()">ĐỪNG ẤN VÀO ĐÂY</button>
+    </div>
+
+    <footer>
+        <p>Số người đã truy cập: {{ visits }}</p>
+        <p>Nam2010© 2025 copyright</p>
+    </footer>
+<script>
+    function startRickroll() {
+        const videoBox = document.getElementById('videoBox');
+        const video = document.getElementById('rickrollVideo');
+        const button = document.getElementById('rickrollBtn');
+
+        videoBox.style.display = 'block';
+        video.muted = false; // Bật tiếng lại nếu trước đó bị mute
+        video.play(); // Auto play sau khi ấn nút
+        button.style.display = 'none';
+
+        // Fullscreen nếu được
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        }
+    }
+</script>
+</body>
+</html>
